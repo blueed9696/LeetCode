@@ -24,13 +24,13 @@ class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         // Get the number of elements of array 'nums'
-        size_t NumberOfElements = sizeof(nums)/sizeof(nums[0]);
+        size_t NumberOfElements = nums.size();
         
         // Define returning array's address
-        vector<int>& return_arr;
+        vector<int> return_arr(2);
 
         for(int i = 0; i < NumberOfElements; i++){
-            for(int j = 1; j < NumberOfElements; j++){
+            for(int j = i + 1; j < NumberOfElements; j++){
                 if(nums[i]+nums[j] == target){
                     return_arr[0] = nums[i];
                     return_arr[1] = nums[j];
@@ -38,5 +38,7 @@ public:
                 }
             }
         }
+
+        return {};  // Return if empty if no pair is found
     }
 };
