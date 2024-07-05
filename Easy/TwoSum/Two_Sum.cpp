@@ -20,25 +20,43 @@
 // Input: nums = [3,3], target = 6
 // Output: [0,1]
 
+#include <iostream>
+#include <vector>
+
+using namespace std;
+
 class Solution {
 public:
     vector<int> twoSum(vector<int>& nums, int target) {
         // Get the number of elements of array 'nums'
         size_t NumberOfElements = nums.size();
         
-        // Define returning array's address
+        // Define the returning array
         vector<int> return_arr(2);
 
-        for(int i = 0; i < NumberOfElements; i++){
-            for(int j = i + 1; j < NumberOfElements; j++){
-                if(nums[i]+nums[j] == target){
-                    return_arr[0] = nums[i];
-                    return_arr[1] = nums[j];
+        for (size_t i = 0; i < NumberOfElements; i++) {
+            for (size_t j = i + 1; j < NumberOfElements; j++) {
+                if (nums[i] + nums[j] == target) {
+                    return_arr[0] = i; // Return the indices
+                    return_arr[1] = j;
                     return return_arr;
                 }
             }
         }
-
-        return {};  // Return if empty if no pair is found
+        return vector<int>(); // Return an empty vector if no pair is found
     }
 };
+
+int main() {
+    Solution sol;
+    vector<int> nums = {2, 7, 11, 15};
+    int target = 9;
+    vector<int> result = sol.twoSum(nums, target);
+
+    for (int index : result) {
+        cout << index << " ";
+    }
+    cout << endl;
+
+    return 0;
+}
